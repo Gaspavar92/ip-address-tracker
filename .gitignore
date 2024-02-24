@@ -15,4 +15,4 @@
 .DS_Store
 
 #Everything else
-*node_modules
+node_modules
