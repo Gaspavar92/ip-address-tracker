@@ -1,15 +1,15 @@
-import { useState } from "react"
-
-const SearchBar = ({setIpAddress, setError}) => {
+const SearchBar = ({setError, setIpAddress}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const regex = /\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b/;
+        const regex = /^(?:\d{1,3}\.){3}\d{1,3}$/;
         const data = new FormData(e.target)
         if (regex.test(data.get("ip"))) {
+            console.log("successful one")
             setError("");
             setIpAddress(data.get("ip"))
         } else {
+            console.log("error one")
             setError("Invalid input. Please enter an IP address.")
             setIpAddress("")
         }

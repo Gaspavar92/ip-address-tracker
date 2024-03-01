@@ -12,7 +12,7 @@ function App() {
 
   return (
     <>
-    <FetchData setError={setError} setResponse={setResponse} setLoading={setLoading} ipAddress={ipAddress}/>
+    <FetchData setError={setError} setResponse={setResponse} setLoading={setLoading} ipAddress={ipAddress} err={error}/>
     <div className="flex flex-col h-screen">
       <SearchBar setIpAddress={setIpAddress} setError={setError} />
       <div className="flex gap-24 bg-white py-16 px-32 absolute left-1/2 top-40 -translate-x-1/2 rounded-xl shadow-lg w-[70vw] min-w-fit justify-center z-10">

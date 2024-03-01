@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import axios from "axios";
 
-const FetchData = ({ ipAddress, setResponse, setError, setLoading }) => {
+const FetchData = ({ ipAddress, setResponse, setError, setLoading, err }) => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -12,18 +12,21 @@ const FetchData = ({ ipAddress, setResponse, setError, setLoading }) => {
             ipAddress: ipAddress
           }
         });
+        console.log(ipAddress)
         setError("");
         setResponse(response.data);
       } catch (error) {
+        console.log(error)
         setError(error.response.data.messages);
         setResponse("");
       } finally {
         setLoading(false);
       }
     };
-
-    fetchData();
-  }, [ipAddress, setResponse, setError, setLoading]);
+    if (!err) {
+        fetchData();
+    }
+  }, [ipAddress, setResponse, setError, setLoading, err]);
 
   return null;
 };
