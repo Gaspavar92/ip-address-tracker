@@ -26,7 +26,7 @@ const FetchData = ({ ipAddress, setResponse, setError, setLoading, err }) => {
     if (!err) {
         fetchData();
     }
-  }, [ipAddress, setResponse, setError, setLoading, err]);
+  }, [ipAddress, err]);
 
   return null;
 };
