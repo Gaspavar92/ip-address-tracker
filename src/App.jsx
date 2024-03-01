@@ -1,33 +1,25 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Ip from './components/Ip'
+import SearchBar from './components/SearchBar'
+import Map from './components/Map'
+import FetchData from './components/FetchData'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [ipAddress, setIpAddress] = useState("")
+  const [error, setError] = useState("")
+  const [response, setResponse] = useState({});
+  const [loading, setLoading] = useState(false);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <FetchData setError={setError} setResponse={setResponse} setLoading={setLoading} ipAddress={ipAddress} err={error}/>
+    <div className="flex flex-col h-screen">
+      <SearchBar setIpAddress={setIpAddress} setError={setError} />
+      <div className="flex gap-24 bg-white py-16 px-32 absolute left-1/2 top-40 -translate-x-1/2 rounded-xl shadow-lg w-[70vw] min-w-fit justify-center z-10">
+        <Ip ipAddress={ipAddress} loading={loading} error={error} response={response}/>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <Map data={response}/>
+    </div>
     </>
   )
 }
