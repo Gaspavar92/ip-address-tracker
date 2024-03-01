@@ -16,3 +16,5 @@
 
 #Everything else
 node_modules
+.env
+.eslintrc.cjs
