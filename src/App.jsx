@@ -12,10 +12,10 @@ function App() {
 
   return (
     <>
-    <FetchData setError={setError} setResponse={setResponse} setLoading={setLoading} ipAddress={ipAddress} err={error}/>
+    {/* <FetchData setError={setError} setResponse={setResponse} setLoading={setLoading} ipAddress={ipAddress} err={error}/> */}
     <div className="flex flex-col h-screen">
       <SearchBar setIpAddress={setIpAddress} setError={setError} />
-      <div className="flex bg-white py-16 px-32 absolute left-1/2 top-40 -translate-x-1/2 rounded-xl shadow-lg w-[70vw] min-w-fit justify-between z-10">
+      <div className="flex flex-col md:flex-row bg-white py-4 md:py-16 px-10 md:px-32 absolute left-1/2 top-32 md:top-40 -translate-x-1/2 rounded-xl shadow-lg w-[90vw] sm:w-[50vw] min-w-fit md:justify-between z-10 h-fit">
         <Ip ipAddress={ipAddress} loading={loading} error={error} response={response}/>
       </div>
     <Map data={response}/>
